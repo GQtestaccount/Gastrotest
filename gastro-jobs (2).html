@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gastrello – Jobs in der Gastronomie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --beige-50: #fdfaf5;
+    --beige-100: #f7f0e3;
+    --beige-200: #ede0c8;
+    --beige-300: #ddc9a8;
+    --blue-500: #1e5fa8;
+    --blue-600: #174d8c;
+    --blue-700: #0f3870;
+    --blue-100: #dde9f7;
+    --blue-50: #eef4fc;
+    --text-dark: #2a1f14;
+    --text-mid: #5c4f3d;
+    --text-light: #9b8d7a;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--beige-50);
+    color: var(--text-dark);
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--beige-200);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--blue-600);
+    letter-spacing: -0.5px;
+  }
+
+  .logo span {
+    color: var(--beige-300);
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  nav ul li a {
+    text-decoration: none;
+    color: var(--text-mid);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  nav ul li a:hover { color: var(--blue-500); }
+
+  .nav-cta {
+    background: var(--blue-600);
+    color: var(--white) !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--blue-700) !important; color: var(--white) !important; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--beige-100) 0%, var(--white) 60%);
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    border-bottom: 1px solid var(--beige-200);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background: var(--blue-50);
+    opacity: 0.6;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -60px;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    background: var(--beige-200);
+    opacity: 0.5;
+  }
+
+  .hero-content { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+
+  .hero-eyebrow {
+    display: inline-block;
+    background: var(--blue-50);
+    color: var(--blue-600);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    border: 1px solid var(--blue-100);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--blue-600);
+  }
+
+  .hero p {
+    font-size: 1.05rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* SEARCH BAR */
+  .search-bar {
+    display: flex;
+    gap: 0;
+    background: var(--white);
+    border: 1.5px solid var(--beige-200);
+    border-radius: 12px;
+    overflow: hidden;
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+    box-shadow: 0 4px 24px rgba(30,95,168,0.08);
+  }
+
+  .search-bar input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 0.9rem 1.2rem;
+    font-size: 0.95rem;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text-dark);
+    background: transparent;
+  }
+
+  .search-bar input::placeholder { color: var(--text-light); }
+
+  .search-divider {
+    width: 1px;
+    background: var(--beige-200);
+    margin: 8px 0;
+  }
+
+  .search-bar button {
+    background: var(--blue-600);
+    color: var(--white);
+    border: none;
+    padding: 0.9rem 1.8rem;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+
+  .search-bar button:hover { background: var(--blue-700); }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    font-size: 0.85rem;
+    color: var(--text-light);
+  }
+
+  .hero-stats strong { color: var(--text-mid); font-weight: 600; }
+
+  /* MAIN LAYOUT */
+  .main-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 2.5rem auto;
+    padding: 0 2rem;
+    align-items: start;
+  }
+
+  /* SIDEBAR FILTERS */
+  .sidebar {
+    background: var(--white);
+    border: 1px solid var(--beige-200);
+    border-radius: 16px;
+    padding: 1.5rem;
+    position: sticky;
+    top: 84px;
+  }
+
+  .sidebar h3 {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+  }
+
+  .filter-section {
+    margin-bottom: 1.8rem;
+  }
+
+  .filter-section h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.8rem;
+  }
+
+  .filter-option {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.55rem;
+    cursor: pointer;
+  }
+
+  .filter-option input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--blue-600);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .filter-option label {
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .filter-count {
+    background: var(--beige-100);
+    color: var(--text-light);
+    font-size: 0.72rem;
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-weight: 500;
+  }
+
+  .benefit-tag-filter {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1.5px solid var(--beige-200);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-mid);
+    cursor: pointer;
+    margin: 0 4px 6px 0;
+    transition: all 0.18s;
+    background: var(--white);
+    user-select: none;
+  }
+
+  .benefit-tag-filter:hover {
+    border-color: var(--blue-500);
+    color: var(--blue-600);
+  }
+
+  .benefit-tag-filter.active {
+    background: var(--blue-600);
+    border-color: var(--blue-600);
+    color: var(--white);
+  }
+
+  .filter-divider {
+    height: 1px;
+    background: var(--beige-200);
+    margin: 1.2rem 0;
+  }
+
+  .clear-filters {
+    width: 100%;
+    padding: 0.6rem;
+    background: none;
+    border: 1px solid var(--beige-200);
+    border-radius: 8px;
+    color: var(--text-mid);
+    font-size: 0.85rem;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .clear-filters:hover {
+    border-color: var(--blue-500);
+    color: var(--blue-600);
+  }
+
+  /* JOB LISTINGS */
+  .jobs-area {}
+
+  .jobs-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.2rem;
+  }
+
+  .jobs-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+
+  .jobs-header p { font-size: 0.88rem; color: var(--text-light); }
+
+  .sort-select {
+    border: 1px solid var(--beige-200);
+    border-radius: 8px;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.85rem;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text-mid);
+    background: var(--white);
+    cursor: pointer;
+    outline: none;
+  }
+
+  /* JOB CARD */
+  .job-card {
+    background: var(--white);
+    border: 1px solid var(--beige-200);
+    border-radius: 16px;
+    padding: 1.5rem 1.6rem;
+    margin-bottom: 1rem;
+    transition: all 0.2s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .job-card:hover {
+    border-color: var(--blue-100);
+    box-shadow: 0 4px 20px rgba(30,95,168,0.1);
+    transform: translateY(-2px);
+  }
+
+  .job-card.featured {
+    border-left: 4px solid var(--blue-600);
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--blue-600);
+    color: var(--white);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+
+  .job-card-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .company-logo {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    border: 1px solid var(--beige-200);
+    background: var(--beige-50);
+  }
+
+  .job-title-area h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.2rem;
+    line-height: 1.3;
+  }
+
+  .company-info {
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .company-info span {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .icon-dot {
+    width: 4px; height: 4px;
+    background: var(--beige-300);
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  /* SALARY SECTION */
+  .salary-section {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0.9rem 1.1rem;
+    background: var(--beige-50);
+    border: 1px solid var(--beige-200);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .salary-item {
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .salary-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+
+  .salary-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+
+  .salary-value.tips {
+    color: var(--blue-600);
+  }
+
+  .salary-divider {
+    width: 1px;
+    background: var(--beige-200);
+    margin: 4px 0;
+  }
+
+  /* BENEFITS TAGS */
+  .benefits-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 1rem;
+  }
+
+  .benefit-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 16px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    border: 1px solid;
+  }
+
+  .tag-4day { background: #eef4fc; color: var(--blue-600); border-color: var(--blue-100); }
+  .tag-meal { background: #fdf5e6; color: #a0620a; border-color: #f5deb3; }
+  .tag-transport { background: #eef7ee; color: #2e7d32; border-color: #c8e6c9; }
+  .tag-bonus { background: #fce4ec; color: #c2185b; border-color: #f8bbd0; }
+  .tag-training { background: #f3e5f5; color: #7b1fa2; border-color: #e1bee7; }
+  .tag-flexible { background: #e8f5e9; color: #388e3c; border-color: #a5d6a7; }
+  .tag-remote { background: #e0f7fa; color: #00695c; border-color: #b2ebf2; }
+  .tag-health { background: #fff3e0; color: #e65100; border-color: #ffe0b2; }
+
+  .job-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--beige-100);
+    padding-top: 0.9rem;
+  }
+
+  .job-type-badges {
+    display: flex;
+    gap: 6px;
+  }
+
+  .type-badge {
+    font-size: 0.77rem;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--beige-200);
+    color: var(--text-mid);
+    background: var(--beige-50);
+  }
+
+  .time-posted {
+    font-size: 0.8rem;
+    color: var(--text-light);
+  }
+
+  .apply-btn {
+    background: var(--blue-600);
+    color: var(--white);
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .apply-btn:hover { background: var(--blue-700); }
+
+  /* ACTIVE FILTERS */
+  .active-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 1rem;
+    min-height: 0;
+  }
+
+  .active-filter-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    background: var(--blue-50);
+    border: 1px solid var(--blue-100);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--blue-600);
+    font-weight: 500;
+  }
+
+  .remove-filter {
+    background: none;
+    border: none;
+    color: var(--blue-600);
+    cursor: pointer;
+    font-size: 0.9rem;
+    line-height: 1;
+    padding: 0;
+    opacity: 0.7;
+  }
+
+  .remove-filter:hover { opacity: 1; }
+
+  /* NO RESULTS */
+  .no-results {
+    text-align: center;
+    padding: 4rem 2rem;
+    display: none;
+  }
+
+  .no-results .emoji { font-size: 2.5rem; margin-bottom: 1rem; }
+  .no-results h3 { font-size: 1.1rem; color: var(--text-dark); margin-bottom: 0.5rem; }
+  .no-results p { font-size: 0.9rem; color: var(--text-light); }
+
+  /* FOOTER */
+  footer {
+    background: var(--text-dark);
+    color: var(--beige-200);
+    padding: 3rem 2rem;
+    margin-top: 4rem;
+    text-align: center;
+  }
+
+  footer .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  footer p {
+    font-size: 0.88rem;
+    opacity: 0.6;
+    margin-bottom: 1.5rem;
+  }
+
+  footer .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  footer .footer-links a {
+    color: var(--beige-200);
+    text-decoration: none;
+    font-size: 0.85rem;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+
+  footer .footer-links a:hover { opacity: 1; }
+
+  @media (max-width: 768px) {
+    .main-layout { grid-template-columns: 1fr; }
+    .sidebar { position: static; }
+    .search-bar { flex-direction: column; border-radius: 12px; }
+    .search-bar button { border-radius: 0 0 10px 10px; }
+    .search-divider { display: none; }
+    nav ul { display: none; }
+  }
+
+  /* JOB DESCRIPTION MODAL */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(42,31,20,0.5);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--white);
+    border-radius: 20px;
+    max-width: 700px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 2.5rem;
+    position: relative;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    background: var(--beige-100);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--text-mid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+
+  .modal-close:hover { background: var(--beige-200); }
+
+  .modal h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-bottom: 0.3rem;
+  }
+
+  .modal-company {
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    margin-bottom: 1.5rem;
+  }
+
+  .modal-body h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin: 1.2rem 0 0.5rem;
+  }
+
+  .modal-body p, .modal-body li {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+
+  .modal-body ul {
+    padding-left: 1.2rem;
+  }
+
+  .modal-body ul li { margin-bottom: 0.3rem; }
+
+  .modal-apply {
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .modal-apply button {
+    background: var(--blue-600);
+    color: var(--white);
+    border: none;
+    padding: 0.9rem 3rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .modal-apply button:hover { background: var(--blue-700); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">gastro<span>.</span>jobs</div>
+  <ul>
+    <li><a href="#">Jobs finden</a></li>
+    <li><a href="#">Arbeitgeber</a></li>
+    <li><a href="#">Über uns</a></li>
+    <li><a href="#" class="nav-cta">Job inserieren</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-eyebrow">🍽 Gastronomie Jobs Deutschland</span>
+    <h1>Dein nächster Job in der <em>Gastronomie</em> wartet.</h1>
+    <p>Echte Gehälter, transparente Trinkgeldangaben, und Jobs mit Benefits, die dein Leben wirklich verbessern.</p>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Stelle, Restaurant, Küche..." />
+      <div class="search-divider"></div>
+      <input type="text" placeholder="Ort, z.B. Berlin" style="flex:0.6; border:none; outline:none; padding:0.9rem 1rem; font-family:'DM Sans',sans-serif; font-size:0.95rem; color:var(--text-dark); background:transparent;" />
+      <button onclick="filterJobs()">Suchen</button>
+    </div>
+    <div class="hero-stats">
+      <span><strong>312</strong> offene Stellen</span>
+      <span><strong>148</strong> Arbeitgeber</span>
+      <span><strong>4-Tage-Woche</strong> bei 42 Jobs</span>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN -->
+<div class="main-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h3>Filter</h3>
+
+    <div class="filter-section">
+      <h4>Benefits</h4>
+      <div id="benefitFilters">
+        <div class="benefit-tag-filter" data-benefit="4-Tage-Woche" onclick="toggleBenefit(this)">⏰ 4-Tage-Woche</div>
+        <div class="benefit-tag-filter" data-benefit="Verpflegung" onclick="toggleBenefit(this)">🍴 Verpflegung</div>
+        <div class="benefit-tag-filter" data-benefit="Fahrgeld" onclick="toggleBenefit(this)">🚌 Fahrgeld</div>
+        <div class="benefit-tag-filter" data-benefit="Bonus" onclick="toggleBenefit(this)">💰 Bonus</div>
+        <div class="benefit-tag-filter" data-benefit="Weiterbildung" onclick="toggleBenefit(this)">📚 Weiterbildung</div>
+        <div class="benefit-tag-filter" data-benefit="Flexible Zeiten" onclick="toggleBenefit(this)">🕐 Flexible Zeiten</div>
+        <div class="benefit-tag-filter" data-benefit="Krankenversicherung" onclick="toggleBenefit(this)">🏥 Krankenzusatz</div>
+      </div>
+    </div>
+
+    <div class="filter-divider"></div>
+
+    <div class="filter-section">
+      <h4>Bereich</h4>
+      <div class="filter-option">
+        <input type="checkbox" id="f1" onchange="filterJobs()">
+        <label for="f1">Küche / Koch <span class="filter-count">84</span></label>
+      </div>
+      <div class="filter-option">
+        <input type="checkbox" id="f2" onchange="filterJobs()">
+        <label for="f2">Service / Kellner <span class="filter-count">102</span></label>
+      </div>
+      <div class="filter-option">
+        <input type="checkbox" id="f3" onchange="filterJobs()">
+        <label for="f3">Bar & Mixologie <span class="filter-count">38</span></label>
+      </div>
+      <div class="filter-option">
+        <input type="checkbox" id="f4" onchange="filterJobs()">
+        <label for="f4">Management <span class="filter-count">26</span></label>
+      </div>
+      <div class="filter-option">
+        <input type="checkbox" id="f5" onchange="filterJobs()">
+        <label for="f5">Café & Bäckerei <span class="filter-count">44</span></label>
+      </div>
+      <div class="filter-option">
+        <input type="checkbox" id="f6" onchange="filterJobs()">
+        <label for="f6">Hotel & Catering <span class="filter-count">18</span></label>
+      </div>
+    </div>
+
+    <div class="filter-divider"></div>
+
+    <div class="filter-section">
+      <h4>Arbeitszeit</h4>
+      <div class="filter-option">
+        <input type="checkbox" id="ft1" onchange="filterJobs()">
+        <label for="ft1">Vollzeit <span class="filter-count">198</span></label>
+      </div>
+      <div class="filter-option">
+        <input type="checkbox" id="ft2" onchange="filterJobs()">
+        <label for="ft2">Teilzeit <span class="filter-count">87</span></label>
+      </div>
+      <div class="filter-option">
+        <input type="checkbox" id="ft3" onchange="filterJobs()">
+        <label for="ft3">Minijob <span class="filter-count">27</span></label>
+      </div>
+    </div>
+
+    <div class="filter-divider"></div>
+
+    <div class="filter-section">
+      <h4>Gehalt (monatlich)</h4>
+      <div style="padding: 0 0.2rem;">
+        <input type="range" min="1800" max="5000" value="1800" step="100" id="salaryRange" style="width:100%;" oninput="updateSalary(this.value)">
+        <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--text-light); margin-top:4px;">
+          <span>ab <strong id="salaryDisplay" style="color:var(--text-dark);">1.800 €</strong></span>
+          <span>5.000 €</span>
+        </div>
+      </div>
+    </div>
+
+    <button class="clear-filters" onclick="clearFilters()">Alle Filter zurücksetzen</button>
+  </aside>
+
+  <!-- JOB LISTINGS -->
+  <main class="jobs-area">
+    <div class="jobs-header">
+      <div>
+        <h2>Stellenangebote</h2>
+        <p id="resultsCount">12 Jobs gefunden</p>
+      </div>
+      <select class="sort-select" onchange="filterJobs()">
+        <option>Neueste zuerst</option>
+        <option>Gehalt (höchstes)</option>
+        <option>Trinkgeld (höchstes)</option>
+        <option>Relevanteste</option>
+      </select>
+    </div>
+
+    <div id="activeFilters" class="active-filters"></div>
+
+    <div id="jobList"></div>
+    <div class="no-results" id="noResults">
+      <div class="emoji">🔍</div>
+      <h3>Keine Jobs gefunden</h3>
+      <p>Versuche, die Filterkriterien anzupassen.</p>
+    </div>
+  </main>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">gastro.jobs</div>
+  <p>Die fairste Jobplattform für die Gastronomie.</p>
+  <div class="footer-links">
+    <a href="#">Impressum</a>
+    <a href="#">Datenschutz</a>
+    <a href="#">Kontakt</a>
+    <a href="#">Für Arbeitgeber</a>
+    <a href="#">FAQ</a>
+  </div>
+</footer>
+
+<script>
+const JOBS = [
+  {
+    id: 1,
+    title: "Sous Chef",
+    company: "Restaurant Luise",
+    location: "Berlin Mitte",
+    type: ["Vollzeit"],
+    area: "Küche / Koch",
+    emoji: "👨‍🍳",
+    salary: { min: 2800, max: 3400 },
+    tips: { avg: "350–600 €", note: "Trinkgeldpool gleichmäßig verteilt" },
+    benefits: ["4-Tage-Woche", "Verpflegung", "Weiterbildung"],
+    description: "Wir suchen einen leidenschaftlichen Sous Chef für unser preisgekröntes Lokal. Du arbeitest direkt mit unserem Küchenchef zusammen und bringst eigene Ideen in die saisonale Speisekarte ein.",
+    tasks: ["Mise en Place & Zubereitung", "Teamführung (4 Personen)", "Qualitätskontrolle", "Menüplanung"],
+    posted: "Heute",
+    featured: true
+  },
+  {
+    id: 2,
+    title: "Restaurantfachkraft / Service",
+    company: "Weinbar am See",
+    location: "München Bogenhausen",
+    type: ["Vollzeit", "Teilzeit"],
+    area: "Service / Kellner",
+    emoji: "🍷",
+    salary: { min: 2200, max: 2600 },
+    tips: { avg: "500–900 €", note: "Eigene Trinkgelder, kein Pool" },
+    benefits: ["Flexible Zeiten", "Fahrgeld", "Bonus"],
+    description: "Für unsere gehobene Weinbar suchen wir herzliche Servicekräfte mit Begeisterung für Wein und Gastfreundschaft.",
+    tasks: ["Tischservice", "Weinberatung", "Mise en Place", "Kassenführung"],
+    posted: "Gestern",
+    featured: false
+  },
+  {
+    id: 3,
+    title: "Barista & Café-Mitarbeiter/in",
+    company: "Kaffeerösterei Braun",
+    location: "Hamburg Eppendorf",
+    type: ["Teilzeit"],
+    area: "Café & Bäckerei",
+    emoji: "☕",
+    salary: { min: 1900, max: 2200 },
+    tips: { avg: "150–300 €", note: "Trinkgeld auf Karte möglich" },
+    benefits: ["4-Tage-Woche", "Weiterbildung", "Flexible Zeiten"],
+    description: "Liebst du Kaffee genauso wie wir? Werde Teil unseres Teams in der beliebtesten Kaffeerösterei Hamburgs.",
+    tasks: ["Espresso- & Filterkaffee-Zubereitung", "Gästeberatung", "Kuchenvitrine & Snacks", "Ladenöffnung/-schluss"],
+    posted: "Vor 2 Tagen",
+    featured: false
+  },
+  {
+    id: 4,
+    title: "Koch / Köchin (Vollzeit)",
+    company: "Biergarten Waldschenke",
+    location: "München Schwabing",
+    type: ["Vollzeit"],
+    area: "Küche / Koch",
+    emoji: "🥩",
+    salary: { min: 2600, max: 3200 },
+    tips: { avg: "200–400 €", note: "Anteiliger Trinkgeldpool Küche/Service" },
+    benefits: ["Verpflegung", "Fahrgeld", "Krankenversicherung"],
+    description: "Herzhafte bayerische Küche in einem der schönsten Biergärten Münchens. Wir kochen frisch, regional und mit Leidenschaft.",
+    tasks: ["Bayerische & internationale Küche", "Grill- & Bratposten", "Lagerbestellung", "Sauberkeit & HACCP"],
+    posted: "Vor 3 Tagen",
+    featured: false
+  },
+  {
+    id: 5,
+    title: "Bar Manager/in",
+    company: "Cocktailbar 1920s",
+    location: "Frankfurt Sachsenhausen",
+    type: ["Vollzeit"],
+    area: "Bar & Mixologie",
+    emoji: "🍸",
+    salary: { min: 3200, max: 4000 },
+    tips: { avg: "600–1.200 €", note: "Eigene Trinkgelder, sehr gästefrequentierter Abend" },
+    benefits: ["4-Tage-Woche", "Bonus", "Weiterbildung", "Flexible Zeiten"],
+    description: "Wir suchen eine erfahrene Bar-Persönlichkeit, die unsere Speakeasy-Bar leitet und eigene Cocktailkreationen einbringt.",
+    tasks: ["Barvorbereitung & Bestandsmanagement", "Cocktailentwicklung", "Teamlead (3 Bartender)", "Gästeempfang & Beratung"],
+    posted: "Vor 4 Tagen",
+    featured: true
+  },
+  {
+    id: 6,
+    title: "Servicemitarbeiter/in Frühstück",
+    company: "Boutique Hotel Roseneck",
+    location: "Düsseldorf Altstadt",
+    type: ["Teilzeit"],
+    area: "Hotel & Catering",
+    emoji: "🏨",
+    salary: { min: 1800, max: 2100 },
+    tips: { avg: "100–250 €", note: "Hotelbetrieb, stabile Trinkgeldeinnahmen" },
+    benefits: ["Flexible Zeiten", "Verpflegung", "Fahrgeld"],
+    description: "Für unser charmantes Boutique-Hotel suchen wir freundliche Servicekräfte für das Frühstücksbuffet.",
+    tasks: ["Frühstücksbuffet aufbauen und betreuen", "À-la-carte-Bestellungen", "Gästebetreuung", "Abrechnungen"],
+    posted: "Vor 5 Tagen",
+    featured: false
+  },
+  {
+    id: 7,
+    title: "Restaurantleiter/in",
+    company: "Trattoria Bella Napoli",
+    location: "Köln Ehrenfeld",
+    type: ["Vollzeit"],
+    area: "Management",
+    emoji: "🍝",
+    salary: { min: 3800, max: 4800 },
+    tips: { avg: "300–500 €", note: "Anteiliger Pool als Führungskraft" },
+    benefits: ["Bonus", "Weiterbildung", "Krankenversicherung", "4-Tage-Woche"],
+    description: "Für unser authentisch-italienisches Restaurant suchen wir eine erfahrene Führungspersönlichkeit, die das Team motiviert und das Lokal erfolgreich leitet.",
+    tasks: ["Personalführung & Dienstplanung", "Qualitätssicherung", "Gästereklamationen", "Umsatz- & Kostencontrolling"],
+    posted: "Vor 1 Woche",
+    featured: false
+  },
+  {
+    id: 8,
+    title: "Bäcker/in & Konditor/in",
+    company: "Bäckerei Herzstück",
+    location: "Leipzig Connewitz",
+    type: ["Vollzeit"],
+    area: "Café & Bäckerei",
+    emoji: "🥐",
+    salary: { min: 2400, max: 2900 },
+    tips: { avg: "50–150 €", note: "Gelegentlich Trinkgeld an der Ladentheke" },
+    benefits: ["4-Tage-Woche", "Weiterbildung", "Verpflegung"],
+    description: "Handwerk trifft Kreativität – unsere Bäckerei ist bekannt für außergewöhnliche Brote und saisonales Gebäck.",
+    tasks: ["Brot- & Brötchenbacken", "Konditorei & Törtchen", "Teigvorbereitung", "Rezeptentwicklung"],
+    posted: "Vor 1 Woche",
+    featured: false
+  },
+  {
+    id: 9,
+    title: "Pizzaiolo / Pizzaköchin",
+    company: "Pizzeria Forno Vero",
+    location: "Stuttgart Mitte",
+    type: ["Vollzeit", "Teilzeit"],
+    area: "Küche / Koch",
+    emoji: "🍕",
+    salary: { min: 2300, max: 2800 },
+    tips: { avg: "200–450 €", note: "Teamtrinkgeld-Pool" },
+    benefits: ["Flexible Zeiten", "Verpflegung", "Fahrgeld"],
+    description: "Echte neapolitanische Pizza im Holzofen – wir suchen Leidenschaft für das Handwerk und Freude an der Arbeit.",
+    tasks: ["Pizzateig kneten & belegen", "Holzofen bedienen", "Mise en Place", "Lagerauffüllung"],
+    posted: "Vor 2 Wochen",
+    featured: false
+  },
+  {
+    id: 10,
+    title: "Eventmanager/in Gastronomie",
+    company: "Eventlocation Glashalle",
+    location: "Hamburg HafenCity",
+    type: ["Vollzeit"],
+    area: "Management",
+    emoji: "🎉",
+    salary: { min: 3400, max: 4200 },
+    tips: { avg: "400–800 €", note: "Anteil aus Veranstaltungsbudget" },
+    benefits: ["4-Tage-Woche", "Bonus", "Weiterbildung", "Krankenversicherung"],
+    description: "Plane und koordiniere unvergessliche Events – von Firmenfeiern bis Hochzeiten in einer der exklusivsten Locations Hamburgs.",
+    tasks: ["Kundenberatung & Angebotserstellung", "Dienstleisterkoordination", "Auf- und Abbau", "Budget-Controlling"],
+    posted: "Vor 2 Wochen",
+    featured: false
+  },
+  {
+    id: 11,
+    title: "Bartender / Barkeeper/in",
+    company: "Rooftop Bar Skyline",
+    location: "Berlin Prenzlauer Berg",
+    type: ["Teilzeit"],
+    area: "Bar & Mixologie",
+    emoji: "🌆",
+    salary: { min: 2000, max: 2500 },
+    tips: { avg: "700–1.300 €", note: "Sehr hohe Trinkgeldrate, Touristenlage" },
+    benefits: ["Flexible Zeiten", "Fahrgeld"],
+    description: "Shake, stir, serve – auf Berlins beliebtester Rooftop-Bar mit Blick über die Stadt.",
+    tasks: ["Cocktail- & Longdrink-Zubereitung", "Getränkelager", "Gästeempfang", "Abrechnung"],
+    posted: "Vor 3 Wochen",
+    featured: false
+  },
+  {
+    id: 12,
+    title: "Küchenhilfe / Spüler/in",
+    company: "Mensa Universität Frankfurt",
+    location: "Frankfurt Bockenheim",
+    type: ["Minijob", "Teilzeit"],
+    area: "Küche / Koch",
+    emoji: "🧹",
+    salary: { min: 1800, max: 2000 },
+    tips: { avg: "0–50 €", note: "Selten Trinkgeld, Kantinenumfeld" },
+    benefits: ["Flexible Zeiten", "Verpflegung"],
+    description: "Zuverlässige Unterstützung im Küchenbetrieb – perfekter Einstieg in die Gastronomie.",
+    tasks: ["Spülküche & Reinigung", "Lebensmittel einlagern", "Salate & Beilagen vorbereiten", "Ausgabebereich betreuen"],
+    posted: "Vor 3 Wochen",
+    featured: false
+  }
+];
+
+const BENEFIT_CLASSES = {
+  "4-Tage-Woche": "tag-4day",
+  "Verpflegung": "tag-meal",
+  "Fahrgeld": "tag-transport",
+  "Bonus": "tag-bonus",
+  "Weiterbildung": "tag-training",
+  "Flexible Zeiten": "tag-flexible",
+  "Krankenversicherung": "tag-health",
+  "Remote": "tag-remote"
+};
+
+const BENEFIT_ICONS = {
+  "4-Tage-Woche": "⏰",
+  "Verpflegung": "🍴",
+  "Fahrgeld": "🚌",
+  "Bonus": "💰",
+  "Weiterbildung": "📚",
+  "Flexible Zeiten": "🕐",
+  "Krankenversicherung": "🏥",
+};
+
+let activeBenefits = new Set();
+
+function toggleBenefit(el) {
+  const benefit = el.dataset.benefit;
+  if (activeBenefits.has(benefit)) {
+    activeBenefits.delete(benefit);
+    el.classList.remove('active');
+  } else {
+    activeBenefits.add(benefit);
+    el.classList.add('active');
+  }
+  filterJobs();
+}
+
+function updateSalary(val) {
+  document.getElementById('salaryDisplay').textContent = Number(val).toLocaleString('de-DE') + ' €';
+  filterJobs();
+}
+
+function filterJobs() {
+  const search = document.getElementById('searchInput').value.toLowerCase();
+  const minSalary = parseInt(document.getElementById('salaryRange').value);
+
+  let filtered = JOBS.filter(job => {
+    if (search && !job.title.toLowerCase().includes(search) && !job.company.toLowerCase().includes(search) && !job.area.toLowerCase().includes(search)) return false;
+    if (job.salary.max < minSalary) return false;
+    if (activeBenefits.size > 0) {
+      for (const b of activeBenefits) {
+        if (!job.benefits.includes(b)) return false;
+      }
+    }
+    return true;
+  });
+
+  renderJobs(filtered);
+  renderActiveFilters();
+}
+
+function renderActiveFilters() {
+  const container = document.getElementById('activeFilters');
+  if (activeBenefits.size === 0) { container.innerHTML = ''; return; }
+  container.innerHTML = [...activeBenefits].map(b =>
+    `<span class="active-filter-pill">${BENEFIT_ICONS[b] || ''} ${b} <button class="remove-filter" onclick="removeBenefit('${b}')">✕</button></span>`
+  ).join('');
+}
+
+function removeBenefit(b) {
+  activeBenefits.delete(b);
+  document.querySelectorAll('.benefit-tag-filter').forEach(el => {
+    if (el.dataset.benefit === b) el.classList.remove('active');
+  });
+  filterJobs();
+}
+
+function clearFilters() {
+  activeBenefits.clear();
+  document.querySelectorAll('.benefit-tag-filter.active').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.filter-option input[type=checkbox]').forEach(cb => cb.checked = false);
+  document.getElementById('salaryRange').value = 1800;
+  updateSalary(1800);
+  document.getElementById('searchInput').value = '';
+  filterJobs();
+}
+
+function renderJobs(jobs) {
+  const list = document.getElementById('jobList');
+  const noResults = document.getElementById('noResults');
+  document.getElementById('resultsCount').textContent = `${jobs.length} Job${jobs.length !== 1 ? 's' : ''} gefunden`;
+
+  if (jobs.length === 0) {
+    list.innerHTML = '';
+    noResults.style.display = 'block';
+    return;
+  }
+  noResults.style.display = 'none';
+
+  list.innerHTML = jobs.map(job => `
+    <div class="job-card ${job.featured ? 'featured' : ''}" onclick="openModal(${job.id})">
+      ${job.featured ? '<span class="featured-badge">⭐ Featured</span>' : ''}
+      <div class="job-card-top">
+        <div class="company-logo">${job.emoji}</div>
+        <div class="job-title-area">
+          <h3>${job.title}</h3>
+          <div class="company-info">
+            <span>${job.company}</span>
+            <span class="icon-dot"></span>
+            <span>📍 ${job.location}</span>
+          </div>
+        </div>
+      </div>
+      <div class="salary-section">
+        <div class="salary-item">
+          <div class="salary-label">Grundgehalt</div>
+          <div class="salary-value">${job.salary.min.toLocaleString('de-DE')} – ${job.salary.max.toLocaleString('de-DE')} €/Monat</div>
+        </div>
+        <div class="salary-divider"></div>
+        <div class="salary-item">
+          <div class="salary-label">Ø Trinkgeld</div>
+          <div class="salary-value tips">+ ${job.tips.avg}/Monat</div>
+        </div>
+        <div class="salary-item" style="font-size:0.78rem; color:var(--text-light); align-self:flex-end; padding-bottom:2px;">
+          ${job.tips.note}
+        </div>
+      </div>
+      <div class="benefits-row">
+        ${job.benefits.map(b => `<span class="benefit-tag ${BENEFIT_CLASSES[b] || 'tag-flexible'}">${BENEFIT_ICONS[b] || ''} ${b}</span>`).join('')}
+      </div>
+      <div class="job-card-footer">
+        <div class="job-type-badges">
+          ${job.type.map(t => `<span class="type-badge">${t}</span>`).join('')}
+          <span class="type-badge">${job.area}</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:1rem;">
+          <span class="time-posted">${job.posted}</span>
+          <button class="apply-btn" onclick="event.stopPropagation(); openModal(${job.id})">Details</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openModal(id) {
+  const job = JOBS.find(j => j.id === id);
+  if (!job) return;
+  document.getElementById('modalContent').innerHTML = `
+    <div style="display:flex; gap:1rem; align-items:center; margin-bottom:1.5rem;">
+      <div style="width:60px; height:60px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.8rem; background:var(--beige-100); border:1px solid var(--beige-200);">${job.emoji}</div>
+      <div>
+        <h2>${job.title}</h2>
+        <p class="modal-company">${job.company} · 📍 ${job.location}</p>
+      </div>
+    </div>
+    <div style="background:var(--beige-50); border:1px solid var(--beige-200); border-radius:12px; padding:1.2rem; margin-bottom:1.5rem;">
+      <div style="display:grid; grid-template-columns:1fr 1px 1fr; gap:1rem; align-items:center;">
+        <div>
+          <div style="font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-light); font-weight:600; margin-bottom:4px;">Grundgehalt</div>
+          <div style="font-size:1.15rem; font-weight:700; color:var(--text-dark);">${job.salary.min.toLocaleString('de-DE')} – ${job.salary.max.toLocaleString('de-DE')} €</div>
+          <div style="font-size:0.8rem; color:var(--text-light);">pro Monat</div>
+        </div>
+        <div style="background:var(--beige-200); height:50px;"></div>
+        <div>
+          <div style="font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-light); font-weight:600; margin-bottom:4px;">Ø Trinkgeld</div>
+          <div style="font-size:1.15rem; font-weight:700; color:var(--blue-600);">+ ${job.tips.avg}</div>
+          <div style="font-size:0.8rem; color:var(--text-light);">${job.tips.note}</div>
+        </div>
+      </div>
+    </div>
+    <div class="benefits-row" style="margin-bottom:1.5rem;">
+      ${job.benefits.map(b => `<span class="benefit-tag ${BENEFIT_CLASSES[b] || 'tag-flexible'}">${BENEFIT_ICONS[b] || ''} ${b}</span>`).join('')}
+    </div>
+    <div class="modal-body">
+      <h4>Über die Stelle</h4>
+      <p>${job.description}</p>
+      <h4>Aufgaben</h4>
+      <ul>${job.tasks.map(t => `<li>${t}</li>`).join('')}</ul>
+      <h4>Vertragsart</h4>
+      <p>${job.type.join(', ')} · ${job.area}</p>
+    </div>
+    <div class="modal-apply">
+      <button onclick="alert('Bewerbung erfolgreich abgesendet! ✓')">Jetzt bewerben</button>
+      <p style="font-size:0.8rem; color:var(--text-light); margin-top:0.7rem;">Inseriert: ${job.posted}</p>
+    </div>
+  `;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModalDirect();
+}
+
+function closeModalDirect() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('searchInput').addEventListener('input', filterJobs);
+renderJobs(JOBS);
+</script>
+</body>
+</html>
